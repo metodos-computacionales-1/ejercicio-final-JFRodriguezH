@@ -36,7 +36,7 @@ Pendulum::~Pendulum()
 }
 
 //------------------------------Function declaring----------------------------
-void initial_conditions(Pendulum & p);
+void initial_conditions(Pendulum & p, float F);
 void euler_cromer(Pendulum & p,double dt,double t);
 std::ofstream outfile;
 
@@ -46,8 +46,9 @@ int main(int argc, char** argv)
 	Pendulum p;
     double t=0.0;//Time 
     int N = atoi(argv[1]);//steps of evolution
+	float F = atoi(argv[2]);//Magnitud de la fuerza
     // intialization
-    initial_conditions(p);
+    initial_conditions(p, F);
 	outfile.open("pendulo.dat");
 	outfile << t << "\t" << p.Theta << "\t" << p.W  << std::endl;
 	for (int ii=1; ii<=N; ii++)
@@ -77,10 +78,10 @@ void euler_cromer(Pendulum & p,double dt,double t)
     }
 } 
  
-void initial_conditions(Pendulum & p)
+void initial_conditions(Pendulum & p, float F)
 {
 	p.q=0.5;
-	p.Fd=1.4;
+	p.Fd=F;
 	p.Omega=0.666;
 	p.L=G;
 	p.W=0.0;
