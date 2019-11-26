@@ -18,8 +18,8 @@ for i in f:
 	theta = theta[N:]
 	k = np.ones(len(theta[q]))*i
 	plt.scatter(k, theta[q], color='k')
-plt.ylabel('Fd')
-plt.xlabel('Theta (rad)')
+plt.xlabel('Fd')
+plt.ylabel('Theta (rad)')
 plt.savefig("bifurcacion.png")
 
 
