@@ -14,4 +14,6 @@ N = int(len(t)/2)
 
 plt.figure()
 plt.plot(w[N:], theta[N:])
+plt.ylabel('Theta (rad)')
+plt.xlabel('w (rad/s)')
 plt.savefig("poincare_"+str(F)+".png")
