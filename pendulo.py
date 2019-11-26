@@ -5,10 +5,13 @@ data = np.loadtxt("pendulo.dat")
 
 t = data[:, 0]
 F = t[0]
-N = len(t)
 theta = data[:, 1]
+Omega = theta[0]
 w = data[:, 2]
+dt = w[0]
+N = int(len(t)/2)
+
 
 plt.figure()
-plt.plot(w[int(N/2):], theta[int(N/2):])
+plt.plot(w[N:], theta[N:])
 plt.savefig("poincare_"+str(F)+".png")
