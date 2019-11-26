@@ -47,11 +47,16 @@ int main(int argc, char** argv)
     double t=0.0;//Time 
     int N = atoi(argv[1]);//steps of evolution
 	float F = atof(argv[2]);//Magnitud de la fuerza
-	std::cout<<F<<std::endl;
     // intialization
     initial_conditions(p, F);
-	outfile.open("pendulo.dat");
-	outfile << p.Fd << "\t" << p.Theta << "\t" << p.W  << std::endl;
+	std::string filename = "pendulo.dat";
+	if(atoi(argv[3])==2){
+		filename = "pendulo_";
+		filename.append(argv[2]);
+		filename.append(".dat");
+	}
+	outfile.open(filename);
+	outfile << p.Fd << "\t" << p.Omega << "\t" << dt  << std::endl;
 	for (int ii=1; ii<=N; ii++)
 	{
 		euler_cromer(p,dt,t);
