@@ -46,11 +46,12 @@ int main(int argc, char** argv)
 	Pendulum p;
     double t=0.0;//Time 
     int N = atoi(argv[1]);//steps of evolution
-	float F = atoi(argv[2]);//Magnitud de la fuerza
+	float F = atof(argv[2]);//Magnitud de la fuerza
+	std::cout<<F<<std::endl;
     // intialization
     initial_conditions(p, F);
 	outfile.open("pendulo.dat");
-	outfile << t << "\t" << p.Theta << "\t" << p.W  << std::endl;
+	outfile << p.Fd << "\t" << p.Theta << "\t" << p.W  << std::endl;
 	for (int ii=1; ii<=N; ii++)
 	{
 		euler_cromer(p,dt,t);
